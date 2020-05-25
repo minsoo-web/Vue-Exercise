@@ -1,24 +1,13 @@
-# project1
+# Todo App
 
-## Project setup
-```
-npm install
-```
+Vue.js 를 이용하여 Todo App 을 만들어 보았습니다.
 
-### Compiles and hot-reloads for development
-```
-npm run serve
-```
+CSS나 마크업보다는 기능구현에 목적을 두었습니다.
 
-### Compiles and minifies for production
-```
-npm run build
-```
+## 느낀점
 
-### Lints and fixes files
-```
-npm run lint
-```
+리액트에서는 OnRemove 함수를 만들어서 자식에게 전해주는 느낌이었다면  
+Vue에서는 자식이 OnRemove 메서드를 만들고 \$emit을 통해 신호를 전달해주는 느낌이다.
 
-### Customize configuration
-See [Configuration Reference](https://cli.vuejs.org/config/).
+얼른 Vuex를 배워서 상태관리를 더 쉽게 하는 법을 배워보고 싶다.  
+(컴포넌트 두 개만 왔다갔다 해도 복잡해지니...)

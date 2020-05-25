@@ -30,7 +30,7 @@ export default {
     name: {
       type: String,
       required: true,
-      // default : "기본 값"
+      // default(){"기본 값"} 
     },
   },
 };
