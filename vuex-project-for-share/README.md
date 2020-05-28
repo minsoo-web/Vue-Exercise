@@ -138,3 +138,86 @@ getters를 편한 방법으로 사용해줄 수 있듯이 `$store.state...` 또�
 
 ## 06. Mutaions
 
+변이 : state 값을 변화 시키는 역할을 합니다.
+
+컴포넌트 내에서도 methods를 이용해 데이터를 변화시키는 것이 가능한데  
+왜 mutation을 사용해야 할까?
+
+똑같은 기능을 하는 메서드를 각각의 컴포넌트에서 재정의 해주어야 하는 불편함이 있습니다.  
+이를 해결해주기 위해 `mutation` 에서 저장되어 있는 함수를 각각의 컴포넌트에서 불러옵니다. (`commit 한다.` 라는 표현으로 쓰입니다.)
+
+이러한 mutaions은 동기적으로 작동한다는 점이 치명적인 단점입니다.
+
+선언 방법과 호출 방법을 같이 알아보겠습니다.
+
+```vue
+<script>
+export default new Vuex.store({
+  state: {},
+  getters: {},
+  mutations: {
+    // payload는 해당 mutation을 호출할 때 넘겨받을 인자에 대한 정의
+    addUsers: (state, payload) => {
+      state.allUsers.push(payload);
+    },
+  },
+});
+</script>
+
+<script>
+import { mapMutations } from vuex;
+export default {
+  methods : {
+    ...mapMutations(['addUsers']),
+    signUp(){
+      // mapMutations 를 사용하지 않은 방법
+      this.$store.commit('addUsers', userObj);
+      // mapMutations 를 사용한 방법
+      this.addUsers(userObj);
+    },
+  },
+}
+</script>
+```
+
+## 07. actions
+
+mutations 가 동기적으로 처리를 해주기 때문에 (state 변화)
+
+mutation을 동작시키는 비지니스 로직 같은 것을 actions에 넣어주면 됩니다.  
+(mutation 컨트롤)
+
+따라서 state에 대한 변화는
+
+1. 컴포넌트가 actions에 있는 함수를 `dispatch` 하고 (신호를 보낸다.)
+2. actions에서 mutaions로 `commit`을 하고
+3. mutations에서 state를 `change`합니다.
+
+actions는 어떻게보면 불필요해 보이는 기능일 수 있으나, state에 변화를 주는 것은 mutations 에 정의를 해주고,  
+그 전까지의 일련의 비지니스 로직들을 설계하는 것에 대한 정의는 actions에서 해주는 것입니다.
+
+정의하고 불러오는 방법을 알아보겠습니다.
+
+```vue
+<script>
+// store
+export default new Vuex.store({
+  actions: {
+    // mutations 에 있는 이름과 겹쳐도 상관 없슴
+    addUsers: (context, payload) => {
+      context.commit("addUsers", payload);
+    },
+  },
+});
+</script>
+
+<script>
+export default {
+  methods: {
+    signUp() {
+      this.$store.dispatch("addUsers", newUsers);
+    },
+  },
+};
+</script>
+```

@@ -44,6 +44,17 @@ export default new Vuex.Store({
       return Math.round((getters.countOfSeoul / getters.allUsersCount) * 100);
     },
   },
-  mutations: {},
-  actions: {},
+  mutations: {
+    addUsers: (state, payload) => {
+      state.allUsers.push(payload);
+    },
+  },
+  actions: {
+    // addUsers: (context, payload) => {
+    //   context.commit("addUsers");
+    // },
+    addUsers: ({ commit }, payload) => {
+      commit("addUsers", payload);
+    },
+  },
 });
