@@ -22,3 +22,7 @@
 맨땅에 개발하기님 유튜브 재생목록  
 [Vue Router](https://www.youtube.com/watch?v=aeczJLcr8xc&list=PLZzSdj89sCN0IRcwT4lJWg_qgfBFmcF6A&index=1)
 
+## 05. Vuex 실습
+
+맨땅에 개발하기님 유튜브 재생목록  
+[Vue Router](https://www.youtube.com/watch?v=gf_KAs7otf4&list=PLZzSdj89sCN292abcbI3utND8pA1T1OyB)
