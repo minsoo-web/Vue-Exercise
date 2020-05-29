@@ -60,3 +60,23 @@ toolbar에 드롭다운 버튼을 만들어서 (vuetify)
 
 logout 기능은 store에 저장된 로그인 정보를 초기화 시켜주고,  
 isLogin과 isLoginError 또한 초기화 시켜주면 끝입니다.
+
+---
+
+# Vue & Axios
+
+이전에 실습하던 프로젝트를 이어서 작업환경으로 진행하는 실습 입니다.
+
+## 코드 출처
+
+맨땅에 개발하기님 유튜브 재생목록  
+[Vue & Axios](https://www.youtube.com/watch?v=FxT0koabbWw&list=PLZzSdj89sCN3EbxoMjhPnMFW14k6dpVv1)
+
+## 01. 환경 설정 및 axios 설치
+
+package.json 에 대한 설명과 npm install 에 대한 간단한 설명 후 module 설치를 하였습니다.
+
+## 02. fake 서버 & post man
+
+서버 개발을 굳이 하지 않고 프론트 개발에만 집중할 수 있게 도와주는 fake 서버에 대한 소개와  
+api 테스트를 도와주는 post man에 대한 소개 강의였습니다.

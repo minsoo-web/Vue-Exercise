@@ -31,3 +31,8 @@
 
 맨땅에 개발하기님 유튜브 재생목록  
 [Vuex & Router](https://www.youtube.com/watch?v=TSyS3hMaDfA&list=PLZzSdj89sCN2BNq2ugCT634Cazda_Ytl-)
+
+## 07. Vuext & Axios 실습 예제
+
+맨땅에 개발하기님 유튜브 재생목록  
+[Vue & Axios](https://www.youtube.com/watch?v=FxT0koabbWw&list=PLZzSdj89sCN3EbxoMjhPnMFW14k6dpVv1)
