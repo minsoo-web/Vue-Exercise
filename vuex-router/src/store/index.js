@@ -38,6 +38,11 @@ export default new Vuex.Store({
       state.isLoginError = true;
       state.userInfo = null;
     },
+    logout(state) {
+      state.isLogin = false;
+      state.isLoginError = false;
+      state.userInfo = null;
+    },
   },
   actions: {
     // 비지니스 로직
@@ -56,6 +61,10 @@ export default new Vuex.Store({
         commit("loginSuccess", selectedUser);
         router.push({ name: "Mypage" });
       }
+    },
+    logout({ commit }) {
+      commit("logout");
+      router.push({ name: "Home" });
     },
   },
   modules: {},

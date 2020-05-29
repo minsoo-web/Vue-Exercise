@@ -46,3 +46,17 @@ actions 비지니스 로직을 통과한 유저 정보를 payload로 mutation에
 Mypage View에서 State를 조회해서 로그인한 회원을 확인합니다.
 
 그리고 로그인 인증 여부에 따라 접근을 제한하는 것을 라우트의 `beforeEnter` 속성에 주었습니다.
+
+## 05 강
+
+로그아웃 기능을 만들어 보겠습니다.
+
+toolbar에 드롭다운 버튼을 만들어서 (vuetify)
+
+1. mypage
+2. logout
+
+버튼을 추가해보았습니다.
+
+logout 기능은 store에 저장된 로그인 정보를 초기화 시켜주고,  
+isLogin과 isLoginError 또한 초기화 시켜주면 끝입니다.

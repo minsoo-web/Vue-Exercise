@@ -34,9 +34,21 @@
       <v-toolbar-title>Application</v-toolbar-title>
       <v-spacer></v-spacer>
       <v-toolbar-items>
-        <v-btn depressed color="teal darken-1" v-if="isLogin">{{
-          userInfo.name
-        }}</v-btn>
+        <v-menu offset-y v-if="isLogin" open-on-hover>
+          <template v-slot:activator="{ on }">
+            <v-btn depressed color="teal darken-1" dark v-on="on">
+              Dropdown
+            </v-btn>
+          </template>
+          <v-list>
+            <v-list-item router :to="{ name: 'Mypage' }">
+              <v-list-item-title>마이페이지</v-list-item-title>
+            </v-list-item>
+            <v-list-item @click="logout">
+              <v-list-item-title>로그아웃</v-list-item-title>
+            </v-list-item>
+          </v-list>
+        </v-menu>
         <v-btn
           depressed
           color="teal darken-1"
@@ -58,7 +70,7 @@
 </template>
 
 <script>
-import { mapState } from "vuex";
+import { mapState, mapActions } from "vuex";
 export default {
   name: "App",
   data() {
@@ -68,6 +80,9 @@ export default {
   },
   computed: {
     ...mapState(["isLogin", "userInfo"]),
+  },
+  methods: {
+    ...mapActions(["logout"]),
   },
 };
 </script>
