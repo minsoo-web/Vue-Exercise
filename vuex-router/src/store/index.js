@@ -1,10 +1,12 @@
 import Vue from "vue";
 import Vuex from "vuex";
+import router from "@/router/index.js";
 
 Vue.use(Vuex);
 
 export default new Vuex.Store({
   state: {
+    userInfo: null, // 로그인한 유저정보
     allUsers: [
       {
         id: 1,
@@ -25,14 +27,16 @@ export default new Vuex.Store({
   mutations: {
     // state를 변화시킴
     // 로그인이 성공
-    loginSuccess(state) {
+    loginSuccess(state, payload) {
       state.isLogin = true;
       state.isLoginError = false;
+      state.userInfo = payload;
     },
     // 로그인이 실패
     loginError(state) {
       state.isLogin = false;
       state.isLoginError = true;
+      state.userInfo = null;
     },
   },
   actions: {
@@ -43,11 +47,15 @@ export default new Vuex.Store({
       state.allUsers.forEach((user) => {
         user.email == singninObj.email ? (selectedUser = user) : null;
       });
-      selectedUser == null
-        ? commit("loginError")
-        : selectedUser.password !== singninObj.password
-        ? commit("loginError")
-        : commit("loginSuccess");
+      if (
+        selectedUser === null ||
+        selectedUser.password !== singninObj.password
+      ) {
+        commit("loginError", selectedUser);
+      } else {
+        commit("loginSuccess", selectedUser);
+        router.push({ name: "Mypage" });
+      }
     },
   },
   modules: {},

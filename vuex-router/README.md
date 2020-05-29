@@ -33,3 +33,16 @@ component
 다음 강의에서는 로그인이 되었다면 로그인 페이지에 들어오지 못하도록 guard 를 사용하는 방법에 대해 알아 보겠습니다.
 
 ## 04 강
+
+> 비밀번호는 vuex 또는 vue 인스턴스에 따로 저장을 시키면 안 됩니다. 보안상 굉장히 위험
+
+우선 로그인에 성공한 유저 정보를 담을 state를 선언해주고
+
+actions 비지니스 로직을 통과한 유저 정보를 payload로 mutation에 commit 합니다.  
+그리고 router를 import 한 뒤 push 메소드를 통해 로그인에 성공하면 mypage로 가게끔 처리 해줍니다.
+
+넘겨준 payload를 받아 state를 업데이트 해주고
+
+Mypage View에서 State를 조회해서 로그인한 회원을 확인합니다.
+
+그리고 로그인 인증 여부에 따라 접근을 제한하는 것을 라우트의 `beforeEnter` 속성에 주었습니다.

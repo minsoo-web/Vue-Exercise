@@ -10,12 +10,20 @@
             <v-list-item-title>Home</v-list-item-title>
           </v-list-item-content>
         </v-list-item>
-        <v-list-item router :to="{ name: 'Login' }">
+        <v-list-item v-if="isLogin" router :to="{ name: 'Mypage' }">
           <v-list-item-action>
-            <v-icon>mdi-contact-mail</v-icon>
+            <v-icon>mdi-account</v-icon>
           </v-list-item-action>
           <v-list-item-content>
-            <v-list-item-title>Contact</v-list-item-title>
+            <v-list-item-title>Mypage</v-list-item-title>
+          </v-list-item-content>
+        </v-list-item>
+        <v-list-item v-else router :to="{ name: 'Login' }">
+          <v-list-item-action>
+            <v-icon>mdi-widgets</v-icon>
+          </v-list-item-action>
+          <v-list-item-content>
+            <v-list-item-title>Login</v-list-item-title>
           </v-list-item-content>
         </v-list-item>
       </v-list>
@@ -26,7 +34,9 @@
       <v-toolbar-title>Application</v-toolbar-title>
       <v-spacer></v-spacer>
       <v-toolbar-items>
-        <v-btn depressed color="teal darken-1" v-if="isLogin">웰컴</v-btn>
+        <v-btn depressed color="teal darken-1" v-if="isLogin">{{
+          userInfo.name
+        }}</v-btn>
         <v-btn
           depressed
           color="teal darken-1"
@@ -57,7 +67,7 @@ export default {
     };
   },
   computed: {
-    ...mapState(["isLogin"]),
+    ...mapState(["isLogin", "userInfo"]),
   },
 };
 </script>
