@@ -1,6 +1,6 @@
 <template>
   <v-app id="inspire">
-    <v-navigation-drawer app>
+    <v-navigation-drawer app v-model="drawer">
       <v-list dense>
         <v-list-item router :to="{ name: 'Home' }" exact>
           <v-list-item-action>
@@ -24,6 +24,18 @@
     <v-app-bar app color="teal" dark>
       <v-app-bar-nav-icon @click.stop="drawer = !drawer"></v-app-bar-nav-icon>
       <v-toolbar-title>Application</v-toolbar-title>
+      <v-spacer></v-spacer>
+      <v-toolbar-items>
+        <v-btn depressed color="teal darken-1" v-if="isLogin">웰컴</v-btn>
+        <v-btn
+          depressed
+          color="teal darken-1"
+          v-else
+          router
+          :to="{ name: 'Login' }"
+          >로그인</v-btn
+        >
+      </v-toolbar-items>
     </v-app-bar>
 
     <v-content>
@@ -36,10 +48,16 @@
 </template>
 
 <script>
+import { mapState } from "vuex";
 export default {
   name: "App",
   data() {
-    return {};
+    return {
+      drawer: null,
+    };
+  },
+  computed: {
+    ...mapState(["isLogin"]),
   },
 };
 </script>
