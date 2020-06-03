@@ -1,11 +1,10 @@
 import Vue from "vue";
 import VueRouter from "vue-router";
-import store from "@/store/index.js";
 
 Vue.use(VueRouter);
 
 const rejectAuthUser = (to, from, next) => {
-  if (store.state.isLogin) {
+  if (localStorage.getItem("access_token")) {
     // 이미 로그인된 유저
     alert("이미 로그인을 하였습니다.");
     next("/");
@@ -16,7 +15,7 @@ const rejectAuthUser = (to, from, next) => {
 
 // 로그인한 회원만 접속
 const onlyAuthUser = (to, from, next) => {
-  if (store.state.isLogin === false) {
+  if (!localStorage.getItem("access_token")) {
     alert("로그인이 필요한 기능입니다.");
     next("/login");
   } else {
