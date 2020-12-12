@@ -1,4 +1,4 @@
-# vue-chat
+# client
 
 ## Project setup
 ```
